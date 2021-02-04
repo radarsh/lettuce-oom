@@ -13,14 +13,10 @@ import org.springframework.data.redis.connection.lettuce.LettuceClientConfigurat
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.time.Duration;
 
-@EnableScheduling
 @SpringBootApplication
-@EnableTransactionManagement
 public class Application {
 
     public static void main(String[] args) {
@@ -73,8 +69,6 @@ public class Application {
 
     @Bean
     StringRedisTemplate redisTemplate(RedisConnectionFactory connectionFactory) {
-        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate(connectionFactory);
-        stringRedisTemplate.setEnableTransactionSupport(true);
-        return stringRedisTemplate;
+        return new StringRedisTemplate(connectionFactory);
     }
 }

@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RedisService {
@@ -17,7 +16,6 @@ public class RedisService {
         this.redisTemplate = redisTemplate;
     }
 
-    @Transactional
     public void ping() {
         logger.info("Pinging Redis");
 
